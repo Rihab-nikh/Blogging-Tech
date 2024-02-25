@@ -29,18 +29,11 @@ namespace DAL.Repos
 
         public User? Update(User updatedUser)
         {
-            var existingUser = _dbContext.User.Find(updatedUser.UserId);//hadi requete juste pour le primarykey
+           
 
-            if (existingUser != null)
-            {
-
-                existingUser.Username = updatedUser.Username;
-                existingUser.Email = updatedUser.Email;
-                existingUser.Password = updatedUser.Password;
-                existingUser.ProfileImage = updatedUser.ProfileImage;
-
+            _dbContext.Update(updatedUser);
                 _dbContext.SaveChanges();
-            }
+
 
             return existingUser;
         }
