@@ -51,6 +51,7 @@ public class UserService
         User user = _userRepo.GetById(userId);
         if (user != null)
         {user.Password = newPassword;}
+        _userRepo.Update(user);
     }
     public void DeleteUser(int userId)
     {
@@ -62,6 +63,7 @@ public class UserService
         User user = _userRepo.GetById(userId);
         if (user != null)
         { user.Email = newEmail; }
+        _userRepo.Update(user);
         
     }
 }
