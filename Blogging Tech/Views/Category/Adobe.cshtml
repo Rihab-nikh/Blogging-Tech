@@ -1,0 +1,67 @@
+﻿@model Models.CategoryVM;
+
+@{
+    ViewData["Title"] = "Adobe Page";
+}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #333; 
+        color: #333; 
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #333; 
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        text-align: center; 
+    }
+
+    ul {
+        list-style-type: none; 
+        padding: 0;
+    }
+
+    img {
+        max-width: 50%;
+        max-height: 50%;
+        border-radius: 15px; 
+        display: block; 
+        margin: 0 auto; 
+    }
+
+    p {
+        color: #fff; 
+        font-size: 30px; 
+        line-height: 1.5; 
+    }
+
+</style>
+<body style="font-family: Arial, sans-serif;">
+    <div>
+            @if (Model.Posts != null && Model.Posts.Any())
+            {
+            <h3>Articles relevant to @Model.Title</h3>
+                    @foreach (var post in Model.Posts)
+                    {
+                        @if (post.CategoryId == Model.CategoryId)
+                        {
+                        <h3>@post.Title</h3>
+                        <img style="width:50px; height:50px;" src="@post.Image">
+                        <p>@post.Content</p>
+                        }
+                    }
+            }
+            else
+            {
+            <p>No posts found for this category.</p>
+            }
+    </div>
+</body>

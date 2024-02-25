@@ -1,0 +1,108 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blogging-Tech</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header >
+        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-white" >
+                
+                <a class="navbar-brand order-1" style="z-index: 1000;" asp-controller="Home" asp-action="Index">
+                    <img class="img-fluid" width="100px" src="~/Images/logo.png"
+                         alt="Reader | Hugo Personal Blog Template" style="border-bottom-left-radius: 50% 20px; border-bottom-right-radius: 50% 20px;margin-bottom: 5px; width:150px; height: 150px; ">
+      </a>
+      <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
+        <ul class="navbar-nav mx-auto">
+             
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Category <i class="ti-angle-down ml-1"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" asp-controller="Category" asp-action="Art">Art</a>
+
+                                <a class="dropdown-item" asp-controller="Category" asp-action="VideoEditing">Video-Editing</a>
+
+                                <a class="dropdown-item" asp-controller="Category" asp-action="FilmMaking">Film-Making</a>
+
+                                <a class="dropdown-item" asp-controller="Category" asp-action="Adobe">Adobe</a>
+
+                                <a class="dropdown-item" asp-controller="Category" asp-action="Programming">Programming</a>
+
+                                <a class="dropdown-item" asp-controller="Category" asp-action="ArtificialIntelligence">Artificial Intelligence</a>
+
+                                <a class="dropdown-item" asp-controller="Category" asp-action="Blockchain">Blockchain</a>
+
+                                <a class="dropdown-item" asp-controller="Category" asp-action="MicroControllers">Micro-Controllers</a>
+              
+            </div>
+          </li>
+          
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+
+          
+
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Post" asp-action="Articles">Articles</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="order-2 order-lg-3 d-flex align-items-center">
+                    <ul class="navbar-nav mx-auto">
+                        @if (Context.Session.GetString("UserId") != null)
+
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">Profile</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Setting" asp-action="Index">Settings</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Auth" asp-action="Logout">Logout</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Auth" asp-action="Index">Login</a>
+                        </li>
+                        }
+                    </ul>
+        <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">
+          <i class="ti-menu"></i>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

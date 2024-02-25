@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Models.PostVM>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Articles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333; /* Light gray background */
+            color: #fff; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            text-align: center; /* Center align content */
+        }
+
+        ul {
+            list-style-type: none; /* Remove bullet points from list */
+            padding: 0;
+        }
+
+        img {
+            max-width: 50%;
+            max-height: 50%;
+            border-radius: 15px; /* Rounded corners */
+            display: block; /* Center the image */
+            margin: 0 auto; /* Center the image horizontally */
+            margin-bottom: 20px; /* Add space between images */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* White shadow for better contrast */
+        }
+
+        h3 {
+            font-size: 24px; /* Adjust heading size */
+            margin-bottom: 10px; /* Add space between headings */
+        }
+
+        p {
+            color: white;
+            font-size: 30px; /* Adjust content font size */
+            line-height: 1.6; /* Adjust line height for better readability */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            @foreach (var post in Model)
+            {
+                <h1>@post.Title</h1>
+                <img src="@post.Image">
+                <p>@post.Content</p>
+
+            }
+        </ul>
+    </div>
+</body>
+</html>
